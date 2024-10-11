@@ -2,7 +2,7 @@ clear
 clc
 
 a = arduino('COM5', 'Nano3'); % or use COM port
-max_samples = 300; % how many times do we check the sound sensor?
+max_samples = 1000; % how many times do we check the sound sensor?
 filter_size = 5;
 tic % start timer
 
