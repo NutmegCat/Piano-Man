@@ -1,29 +1,16 @@
-clear
+clear 
 clc
 
-a = arduino('COM5', 'Nano3');
-
-figure
-h = animatedline;
-ax = gca;
-ax.YGrid = 'on';
-ax.YLim = [-0.1 5];
-title('Sound sensor voltage vs time (live)');
-ylabel('Time [HH:MM:SS]');
-xlabel('Voltage [volt]');
-stop = false;
-startTime = datetime('now');
-while ~stop
-    % Read current voltage value
-    voltage = readVoltage(a,'A2');
-    % Get current time
-    t = datetime('now') - startTime;
-    % Add points to animation
-    addpoints(h,datenum(t),voltage)
-    % Update axes
-    ax.XLim = datenum([t-seconds(15) t]);
-    datetick('x','keeplimits')
-    drawnow
-    % Check stop condition (check the button on D6)
-    stop = readDigitalPin(a,'D6');
+a = arduino('COM5', 'Nano3') % or use COM port
+tic %start timer
+max_samples = 300; % how many times do we check the sound sensor?
+filter_size = 5;
+tic %start timer
+for i = 1:max_samples
+    sound_data(i) = readVoltage(a,'A2')
+    time_data(i) = toc;
 end
+plot(time_data, sound_data)
+% put labels on your graph.
+% Now, add filtering to the data.
+% plot the filtered data.
