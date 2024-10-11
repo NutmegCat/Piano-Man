@@ -2,7 +2,6 @@ clear
 clc
 
 a = arduino('COM5', 'Nano3');
-% https://www.mathworks.com/videos/plotting-live-data-of-atemperature-sensor-using-arduino-and-matlab-121317.html
 figure
 h = animatedline;
 ax = gca;
