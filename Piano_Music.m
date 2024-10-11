@@ -1,5 +1,5 @@
 clear all; close all;
-a = arduino('COM3', 'Nano3') % or use COM port
+a = arduino('COM5', 'Nano3') % or use COM port
 tic %start timer
 max_samples = 1000; % how many times do we check the sound sensor?
 tic %start timer
